@@ -13,7 +13,8 @@
 		22EEC5702A12D2AD00813ACE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22EEC56E2A12D2AD00813ACE /* Main.storyboard */; };
 		22EEC5722A12D2AF00813ACE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22EEC5712A12D2AF00813ACE /* Assets.xcassets */; };
 		22EEC5752A12D2AF00813ACE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22EEC5732A12D2AF00813ACE /* LaunchScreen.storyboard */; };
-		22EEC5802A12D2AF00813ACE /* PhotoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EEC57F2A12D2AF00813ACE /* PhotoAppTests.swift */; };
+		22EEC5992A12D3DE00813ACE /* SignUpFormModelValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EEC5982A12D3DE00813ACE /* SignUpFormModelValidatorTests.swift */; };
+		22EEC59B2A12D4AC00813ACE /* SignUpFormModelValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EEC59A2A12D4AC00813ACE /* SignUpFormModelValidator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,8 @@
 		22EEC5742A12D2AF00813ACE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22EEC5762A12D2AF00813ACE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22EEC57B2A12D2AF00813ACE /* PhotoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		22EEC57F2A12D2AF00813ACE /* PhotoAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAppTests.swift; sourceTree = "<group>"; };
+		22EEC5982A12D3DE00813ACE /* SignUpFormModelValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFormModelValidatorTests.swift; sourceTree = "<group>"; };
+		22EEC59A2A12D4AC00813ACE /* SignUpFormModelValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFormModelValidator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				22EEC5712A12D2AF00813ACE /* Assets.xcassets */,
 				22EEC5732A12D2AF00813ACE /* LaunchScreen.storyboard */,
 				22EEC5762A12D2AF00813ACE /* Info.plist */,
+				22EEC59A2A12D4AC00813ACE /* SignUpFormModelValidator.swift */,
 			);
 			path = PhotoApp;
 			sourceTree = "<group>";
@@ -92,7 +95,7 @@
 		22EEC57E2A12D2AF00813ACE /* PhotoAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				22EEC57F2A12D2AF00813ACE /* PhotoAppTests.swift */,
+				22EEC5982A12D3DE00813ACE /* SignUpFormModelValidatorTests.swift */,
 			);
 			path = PhotoAppTests;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 					};
 					22EEC57A2A12D2AF00813ACE = {
 						CreatedOnToolsVersion = 14.1;
+						LastSwiftMigration = 1410;
 						TestTargetID = 22EEC5642A12D2AD00813ACE;
 					};
 				};
@@ -200,6 +204,7 @@
 			files = (
 				22EEC56D2A12D2AD00813ACE /* ViewController.swift in Sources */,
 				22EEC5692A12D2AD00813ACE /* AppDelegate.swift in Sources */,
+				22EEC59B2A12D4AC00813ACE /* SignUpFormModelValidator.swift in Sources */,
 				22EEC56B2A12D2AD00813ACE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,7 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22EEC5802A12D2AF00813ACE /* PhotoAppTests.swift in Sources */,
+				22EEC5992A12D3DE00813ACE /* SignUpFormModelValidatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,14 +420,21 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = rnprata.PhotoAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotoApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PhotoApp";
@@ -434,10 +446,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = rnprata.PhotoAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
