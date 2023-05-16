@@ -76,14 +76,20 @@ final class SignUpFormModelValidatorTests: XCTestCase {
         XCTAssertTrue(isEmailValid, "The isEmailValid() should have returned TRUE for a valid email but returned FALSE")
     }
     
-    func testSignUpFormModelValidator_WhenInvalidEmailProvided_ShouldReturnFalse() {
+    func testSignUpFormModelValidator_WhenEmailDoesNotContainTheDomain_ShouldReturnFalse() {
         // Act
-        let isEmailInvalid = sut.isEmailValid(email: "rayanaprata@uol")
-        let isAnotherEmailInvalid = sut.isEmailValid(email: "rayanapratauol.com")
+        let isEmailInvalid = sut.isEmailValid(email: "rayanaprata@")
         
         // Assert
-        XCTAssertFalse(isEmailInvalid, "The isEmailValid() should have returned FALSE for a invalid email but returned TRUE")
-        XCTAssertFalse(isAnotherEmailInvalid, "The isEmailValid() should have returned FALSE for a invalid email but returned TRUE")
+        XCTAssertFalse(isEmailInvalid, "The isEmailValid() should have returned FALSE when the email does not contain the domain but returned TRUE")
+    }
+    
+    func testSignUpFormModelValidator_WhenEmailDoesNotContainAtSign_ShouldReturnFalse() {
+        // Act
+        let isEmailInvalid = sut.isEmailValid(email: "rayanapratauol.com")
+        
+        // Assert
+        XCTAssertFalse(isEmailInvalid, "The isEmailValid() should have returned FALSE when the email does not contain the At sign but returned TRUE")
     }
     
     func testSignUpFormModelValidator_WhenValidPasswordProvided_ShouldReturnTrue() {
