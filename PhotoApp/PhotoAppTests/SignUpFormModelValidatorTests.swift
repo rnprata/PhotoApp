@@ -113,5 +113,13 @@ final class SignUpFormModelValidatorTests: XCTestCase {
         XCTAssertFalse(isPasswordWithoutLowercaseInvalid, "The isPasswordValid() should have returned FALSE for a invalid password (without lowercase) but returned TRUE")
         XCTAssertFalse(isPasswordWithoutDigitInvalid, "The isPasswordValid() should have returned FALSE for a invalid password (without digit) but returned TRUE")
     }
+    
+    func testSignUpFormModelValidator_WhenEqualPasswordsProvided_ShouldReturnTrue() {
+        // Act
+        let doPasswordsMatch = sut.doPasswordsMatch(password: "12345678", repeatPassword: "12345678")
+        
+        // Assert
+        XCTAssertTrue(doPasswordsMatch, "The doPasswordsMatch() should have returned TRUE for matching passwords but it has returned FALSE")
+    }
 
 }
