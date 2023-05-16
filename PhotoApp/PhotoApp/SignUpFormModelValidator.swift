@@ -47,7 +47,9 @@ class SignUpFormModelValidator {
         let hasLowercase = password.rangeOfCharacter(from: .lowercaseLetters) != nil
         let hasDigit = password.rangeOfCharacter(from: .decimalDigits) != nil
         
-        return password.count >= SignUpConstants.passwordMinLength && hasUppercase && hasLowercase && hasDigit
+        return password.count >= SignUpConstants.passwordMinLength &&
+        password.count <= SignUpConstants.passwordMaxLength &&
+        hasUppercase && hasLowercase && hasDigit
     }
     
     func doPasswordsMatch(password: String, repeatPassword: String) -> Bool {

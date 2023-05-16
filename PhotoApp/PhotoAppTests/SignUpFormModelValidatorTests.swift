@@ -100,18 +100,44 @@ final class SignUpFormModelValidatorTests: XCTestCase {
         XCTAssertTrue(isPasswordValid, "The isPasswordValid() should have returned TRUE for a valid password but returned FALSE")
     }
     
-    func testSignUpFormModelValidator_WhenInvalidPasswordProvided_ShouldReturnFalse() {
+    func testSignUpFormModelValidator_WhenTooShortPasswordProvided_ShouldReturnFalse() {
         // Act
-        let isShortPasswordInvalid = sut.isPasswordValid(password: "short")
-        let isPasswordWithoutUppercaseInvalid = sut.isPasswordValid(password: "senha123")
-        let isPasswordWithoutLowercaseInvalid = sut.isPasswordValid(password: "SENHA123")
-        let isPasswordWithoutDigitInvalid = sut.isPasswordValid(password: "SenhaSegura")
-        
+        let isPasswordValid = sut.isPasswordValid(password: "short")
+       
         // Assert
-        XCTAssertFalse(isShortPasswordInvalid, "The isPasswordValid() should have returned FALSE for a invalid password (length is too short) but returned TRUE")
-        XCTAssertFalse(isPasswordWithoutUppercaseInvalid, "The isPasswordValid() should have returned FALSE for a invalid password (without uppercase) but returned TRUE")
-        XCTAssertFalse(isPasswordWithoutLowercaseInvalid, "The isPasswordValid() should have returned FALSE for a invalid password (without lowercase) but returned TRUE")
-        XCTAssertFalse(isPasswordWithoutDigitInvalid, "The isPasswordValid() should have returned FALSE for a invalid password (without digit) but returned TRUE")
+        XCTAssertFalse(isPasswordValid, "The isPasswordValid() should have returned FALSE for a password that is shorter then \(SignUpConstants.passwordMinLength) characters, but it has returned TRUE")
+    }
+    
+    func testSignUpFormModelValidator_WhenTooLongPasswordProvided_ShouldReturnFalse() {
+        // Act
+        let isPasswordValid = sut.isPasswordValid(password: "ThisPasswordIsTooLongerToBeAccepted123")
+       
+        // Assert
+        XCTAssertFalse(isPasswordValid, "The isPasswordValid() should have returned FALSE for a password that is longer then \(SignUpConstants.passwordMaxLength) characters, but it has returned TRUE")
+    }
+    
+    func testSignUpFormModelValidator_WhenPasswordWithoutUppercasedProvided_ShouldReturnFalse() {
+        // Act
+        let isPasswordValid = sut.isPasswordValid(password: "senha123")
+       
+        // Assert
+        XCTAssertFalse(isPasswordValid, "The isPasswordValid() should have returned FALSE for a password without uppercased, but it has returned TRUE")
+    }
+    
+    func testSignUpFormModelValidator_WhenPasswordWithoutLowercasedProvided_ShouldReturnFalse() {
+        // Act
+        let isPasswordValid = sut.isPasswordValid(password: "SENHA123")
+       
+        // Assert
+        XCTAssertFalse(isPasswordValid, "The isPasswordValid() should have returned FALSE for a password without lowercased, but it has returned TRUE")
+    }
+    
+    func testSignUpFormModelValidator_WhenPasswordWithoutDigitsProvided_ShouldReturnFalse() {
+        // Act
+        let isPasswordValid = sut.isPasswordValid(password: "SenhaSegura")
+       
+        // Assert
+        XCTAssertFalse(isPasswordValid, "The isPasswordValid() should have returned FALSE for a password without digits, but it has returned TRUE")
     }
     
     func testSignUpFormModelValidator_WhenEqualPasswordsProvided_ShouldReturnTrue() {
