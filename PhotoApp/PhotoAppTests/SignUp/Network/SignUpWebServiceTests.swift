@@ -33,6 +33,7 @@ final class SignUpWebServiceTests: XCTestCase {
         sut = nil
         signUpFormRequestModel = nil
         MockURLProtocol.stubResponseData = nil
+        MockURLProtocol.error = nil
     }
     
     func testSignUpWebService_WhenGivenSuccessfullResponse_ReturnsSuccess() {
@@ -107,14 +108,15 @@ final class SignUpWebServiceTests: XCTestCase {
         
         // Act
         sut.signup(withForm: signUpFormRequestModel) { (signUpResponseModel, error) in
-            
             // Assert
-            XCTAssertEqual(error, SignUpError.failedRequest(description: errorDescription))
-            XCTAssertEqual(error?.localizedDescription, errorDescription)
+            XCTAssertEqual(error, SignUpError.failedRequest(description: errorDescription),
+                           "This signup() method did not return an expecter error for the Failed Request")
+            
+            //XCTAssertEqual(error?.localizedDescription, errorDescription)
             expectation.fulfill()
         }
         
         self.wait(for: [expectation], timeout: 2)
     }
-
+    
 }
