@@ -68,12 +68,33 @@ final class SignUpWebServiceTests: XCTestCase {
                          "The response model for a request containing unknown JSON response, should have been nil")
             
             XCTAssertEqual(error, SignUpErrors.responseModelParsingError,
-                           "The signup() method did not return expected error")
+                           "The signup() method did not return expected error for an responseModelParsingError error")
             
             expectation.fulfill()
         }
         
         self.wait(for: [expectation], timeout: 5)
+    }
+    
+    func testSignUpWebService_WhenEmptyURLStringProvided_ReturnsError() {
+        // Arrange
+        let expectation = self.expectation(description: "An empty request URL string expectation")
+        sut = SignUpWebService(urlString: "")
+        
+        // Act
+        sut.signup(withForm: signUpFormRequestModel) { signUpRespondeModel, error in
+            
+            // Assert
+            XCTAssertNil(signUpRespondeModel,
+                         "When an invalidRequestURLStringError takes place, the response model must be nil")
+            
+            XCTAssertEqual(error, SignUpErrors.invalidRequestURLStringError,
+                           "The signup() method did not return expected error for an invalidRequestURLStringError error")
+            
+            expectation.fulfill()
+        }
+        
+        self.wait(for: [expectation], timeout: 2)
     }
 
 }

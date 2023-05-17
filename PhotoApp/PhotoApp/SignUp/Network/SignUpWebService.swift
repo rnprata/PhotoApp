@@ -19,7 +19,7 @@ class SignUpWebService {
     
     func signup(withForm formModel: SignUpFormRequestModel, completionHandler: @escaping(SignUpResponseModel?, SignUpErrors?) -> Void) {
         guard let url = URL(string: urlString) else {
-            // TODO: create a unit test to test that specific error message is returned is URL is nil
+            completionHandler(nil, SignUpErrors.invalidRequestURLStringError)
             return
         }
         var request = URLRequest(url: url)
