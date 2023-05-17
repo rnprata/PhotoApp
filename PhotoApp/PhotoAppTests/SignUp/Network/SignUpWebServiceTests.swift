@@ -67,7 +67,7 @@ final class SignUpWebServiceTests: XCTestCase {
             XCTAssertNil(signUpResponseModel,
                          "The response model for a request containing unknown JSON response, should have been nil")
             
-            XCTAssertEqual(error, SignUpErrors.responseModelParsingError,
+            XCTAssertEqual(error, SignUpError.invalidResponseModel,
                            "The signup() method did not return expected error for an responseModelParsingError error")
             
             expectation.fulfill()
@@ -88,7 +88,7 @@ final class SignUpWebServiceTests: XCTestCase {
             XCTAssertNil(signUpRespondeModel,
                          "When an invalidRequestURLStringError takes place, the response model must be nil")
             
-            XCTAssertEqual(error, SignUpErrors.invalidRequestURLStringError,
+            XCTAssertEqual(error, SignUpError.invalidRequestURLString,
                            "The signup() method did not return expected error for an invalidRequestURLStringError error")
             
             expectation.fulfill()
