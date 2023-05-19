@@ -34,6 +34,7 @@ final class SignUpPresenterTests: XCTestCase {
         signUpFormModel = nil
         mockSignUpModelValidator = nil
         mockSignUpWebService = nil
+        mockSignUpViewDelegate = nil
         sut = nil
     }
 
