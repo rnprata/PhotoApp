@@ -13,6 +13,7 @@ final class SignUpPresenterTests: XCTestCase {
     var signUpFormModel: SignUpFormModel!
     var mockSignUpModelValidator: MockSignUpModelValidator!
     var mockSignUpWebService: MockSignUpWebService!
+    var mockSignUpViewDelegate: MockSignUpViewDelegate!
     var sut: SignUpPresenter!
     
     override func setUp() {
@@ -23,7 +24,10 @@ final class SignUpPresenterTests: XCTestCase {
                                               repeatPassword: "SenhaSegura123")
         mockSignUpModelValidator = MockSignUpModelValidator()
         mockSignUpWebService = MockSignUpWebService()
-        sut = SignUpPresenter(formModelValidator: mockSignUpModelValidator, webService: mockSignUpWebService)
+        mockSignUpViewDelegate = MockSignUpViewDelegate()
+        sut = SignUpPresenter(formModelValidator: mockSignUpModelValidator,
+                              webService: mockSignUpWebService,
+                              delegate: mockSignUpViewDelegate)
     }
 
     override func tearDown() {
@@ -53,12 +57,16 @@ final class SignUpPresenterTests: XCTestCase {
         XCTAssertTrue(mockSignUpWebService.isSignUpMethodCalled, "The signUp() method was not called in the SignUpWebService class")
     }
     
-    func testSignUpPresenter_When_() {
+    func testSignUpPresenter_WhenSignUpOperationSuccessful_CallsSuccessOnViewDelegate() {
         // Arrange
+        let myExpectation = expectation(description: "Expect the successfullSignUp() method to be called")
+        mockSignUpViewDelegate.expectation = myExpectation
         
         // Act
+        sut.processUserSignUp(formModel: signUpFormModel)
+        self.wait(for: [myExpectation], timeout: 5)
         
         // Assert
+        XCTAssertEqual(mockSignUpViewDelegate.successfullSignUpCounter, 1)
     }
-
 }
