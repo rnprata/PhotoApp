@@ -87,6 +87,7 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="btd-EO-tOH" id="43e-T4-xm7"/>
+                        <outlet property="firstNameTextField" destination="l64-hE-U2I" id="9Hk-bN-sG0"/>
                         <outlet property="lastNameTextField" destination="btd-EO-tOH" id="Uwz-7J-g8b"/>
                         <outlet property="passwordTextField" destination="D7H-ee-xk6" id="OzP-ZI-9lR"/>
                         <outlet property="repeatPasswordTextField" destination="5H1-8S-cnc" id="APW-kL-AKm"/>

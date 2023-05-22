@@ -24,21 +24,33 @@ final class SignUpViewControllerTests: XCTestCase {
         sut = nil
     }
 
-    func testSignUpViewController_WhenCreated_HasrequiredTextFieldsEmpty() {
+    func testSignUpViewController_WhenCreated_HasrequiredTextFieldsEmpty() throws {
+        
+        let firstNameTextField = try XCTUnwrap(
+            sut.firstNameTextField, "The firstNameTextField is not connected to an IBOutlet")
+        let lastNameTextField = try XCTUnwrap(
+            sut.lastNameTextField, "The lastNameTextField is not connected to an IBOutlet")
+        let emailTextField = try XCTUnwrap(
+            sut.emailTextField, "The emailTextField is not connected to an IBOutlet")
+        let passwordTextField = try XCTUnwrap(
+            sut.passwordTextField, "The passwordTextField is not connected to an IBOutlet")
+        let repeatPasswordTextField = try XCTUnwrap(
+            sut.repeatPasswordTextField, "The repeatPasswordTextField is not connected to an IBOutlet")
+        
         XCTAssertEqual(
-            sut.firstNameTextField.text, "",
+            firstNameTextField.text, "",
             "First name text field was not empty when the view controller initially loaded")
         XCTAssertEqual(
-            sut.lastNameTextField.text, "",
+            lastNameTextField.text, "",
             "Last name text field was not empty when the view controller initially loaded")
         XCTAssertEqual(
-            sut.emailTextField.text, "",
+            emailTextField.text, "",
             "Email text field was not empty when the view controller initially loaded")
         XCTAssertEqual(
-            sut.passwordTextField.text, "",
+            passwordTextField.text, "",
             "Password text field was not empty when the view controller initially loaded")
         XCTAssertEqual(
-            sut.repeatPasswordTextField.text, "",
+            repeatPasswordTextField.text, "",
             "Repeat Password text field was not empty when the view controller initially loaded")
     }
 
