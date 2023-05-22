@@ -81,6 +81,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbc-0E-yXi">
+                                <rect key="frame" x="118" y="575" width="157" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="SignUp"/>
+                                <connections>
+                                    <action selector="signUpButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Jz-6C-avR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -91,11 +100,12 @@
                         <outlet property="lastNameTextField" destination="btd-EO-tOH" id="Uwz-7J-g8b"/>
                         <outlet property="passwordTextField" destination="D7H-ee-xk6" id="OzP-ZI-9lR"/>
                         <outlet property="repeatPasswordTextField" destination="5H1-8S-cnc" id="APW-kL-AKm"/>
+                        <outlet property="signUpButton" destination="bbc-0E-yXi" id="FUa-x3-Vmg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-379" y="-127"/>
+            <point key="canvasLocation" x="-379.38931297709922" y="-127.46478873239437"/>
         </scene>
     </scenes>
     <resources>
